@@ -24,9 +24,9 @@ class Character {
     this.gender = gender;
     this.height = Number(height);
     this.mass = mass;
-    this.hairColor = hair_color;
-    this.skinColor = skin_color;
-    this.eyeColor = eye_color;
+    this.hair_color = hair_color;
+    this.skin_color = skin_color;
+    this.eye_color = eye_color;
     this.pictureUrl = pictures[name];
     this.films = films.length;
   }
@@ -51,6 +51,11 @@ async function getData(characterId) {
     `https://swapi.dev/api/people/${characterId}`
   );
   let json = await characterData.json();
+
+  const filmResult = await Promise.all(
+    films.map((apiUrl) => fetch(apiUrl).then(async (r) => await r.json))
+  );
+
   return json;
 }
 
@@ -80,29 +85,22 @@ document
     picture2.src = selectedCharacter2.pictureUrl;
     pictureContainer2.appendChild(picture2);
 
-    // Ta bort klass
     let compareBtn = document.getElementById("compare-data-btn");
     compareBtn.classList.remove("hidden");
 
     function showInfo() {
-      //Klicka på knapp och få ut info.
-
       let characterData = document.querySelector("#show-data");
       characterData.textContent = selectedCharacter.info();
-
-      //       let attribut = document.querySelector("#attribut");
-      //       attribut.innerHTML = `<p>Name</p><p>Kön</p><p>Längd</p>
-      //   <p>Vikt</p><p>Hårfärg</p><p>Hudfärg</p><p>Ögonfärg</p>`;
 
       let characterData2 = document.querySelector("#show-data2");
       characterData2.textContent = selectedCharacter2.info();
     }
-    // Jämför data mellan karaktärer
 
     function comparison(character1, character2) {
       let comparisonData = document.getElementById("compare-character");
 
       const textComparison = [];
+      // Längden
       if (character1.height > character2.height) {
         textComparison.push(
           `${character1.name}` + " is taller than " + `${character2.name}`
@@ -118,6 +116,89 @@ document
             `${character2.name}`
         );
       }
+      // Vikten
+      if (character1.mass > character2.mass) {
+        textComparison.push(
+          `${character1.name}` + " weighs more than " + `${character2.name}`
+        );
+      } else if (character1.mass < character2.mass) {
+        textComparison.push(
+          `${character2.name}` + " weighs more than " + `${character1.name}`
+        );
+      } else {
+        textComparison.push(
+          `${character1.name}` + " weigh the same " + `${character2.name}`
+        );
+      }
+      // Filmer
+      if (character1.films > character2.films) {
+        textComparison.push(
+          `${character1.name}` +
+            " has appeared in more movies than " +
+            `${character2.name}`
+        );
+      } else if (character1.films < character2.films) {
+        textComparison.push(
+          `${character2.name}` +
+            " has appeared in more movies than " +
+            `${character1.name}`
+        );
+      } else {
+        textComparison.push(
+          `${character1.name}` +
+            " has appeared in equal number of movies " +
+            `${character2.name}`
+        );
+      }
+
+      // Kön
+      if (character1.gender === character2.gender) {
+        textComparison.push(
+          `${character1.name}` +
+            " and " +
+            `${character2.name}` +
+            `" has the same gender"`
+        );
+      } else {
+        textComparison.push(
+          `${character2.name}` +
+            " and " +
+            `${character1.name}` +
+            `"does not have the same gender"`
+        );
+      }
+
+      // Hårfärg
+      if (character1.hair_color === character2.hair_color) {
+        textComparison.push(
+          `${character2.name}` +
+            " and " +
+            `${character1.name}` +
+            `"has the same haircolor"`
+        );
+      } else {
+        textComparison.push(
+          `${character1.name}` +
+            " does not have the same haircolor as " +
+            `${character2.name}`
+        );
+      }
+      // Hudfärg
+      if (character1.skin_color === character2.skin_color) {
+        textComparison.push(
+          `${character2.name}` +
+            " and " +
+            `${character1.name}` +
+            `"has the same skincolor"`
+        );
+      } else {
+        textComparison.push(
+          `${character1.name}` +
+            " does not have the same skincolor as " +
+            `${character2.name}`
+        );
+      }
+
       comparisonData.textContent = textComparison.join(", ");
     }
 
@@ -126,5 +207,21 @@ document
 
       showInfo();
       comparison(selectedCharacter, selectedCharacter2);
+
+      let showExtraInfoBtn = document.getElementById("show-extra");
+      showExtraInfoBtn.classList.remove("hidden");
     });
   });
+
+function showExtraInfo() {
+  document
+    .getElementById("show-extra")
+    .addEventListener("click", async function (e) {
+      e.preventDefault();
+
+      let extraData = document.querySelector("#show-extra-info"); // skriver ut datan vi vill visa
+      extraData.textContent = filmResult.info();
+
+      showExtraInfo();
+    });
+}
