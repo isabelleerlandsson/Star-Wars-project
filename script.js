@@ -52,10 +52,6 @@ async function getData(characterId) {
   );
   let json = await characterData.json();
 
-  const filmResult = await Promise.all(
-    films.map((apiUrl) => fetch(apiUrl).then(async (r) => await r.json))
-  );
-
   return json;
 }
 
@@ -208,20 +204,15 @@ document
       showInfo();
       comparison(selectedCharacter, selectedCharacter2);
 
-      let showExtraInfoBtn = document.getElementById("show-extra");
-      showExtraInfoBtn.classList.remove("hidden");
+      let showExtraDataBtn = document.getElementById("show-extra");
+      showExtraDataBtn.classList.remove("hidden");
+
+      showExtraDataBtn.addEventListener("click", async function (e) {
+        e.preventDefault();
+        console.log("clicked");
+
+        let extraData = document.getElementById("show-extra-data");
+        extraData.textContent = showInfo();
+      });
     });
   });
-
-function showExtraInfo() {
-  document
-    .getElementById("show-extra")
-    .addEventListener("click", async function (e) {
-      e.preventDefault();
-
-      let extraData = document.querySelector("#show-extra-info"); // skriver ut datan vi vill visa
-      extraData.textContent = filmResult.info();
-
-      showExtraInfo();
-    });
-}
