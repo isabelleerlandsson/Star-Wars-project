@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Genos&display=swap" rel="stylesheet">   
+    <title>Star Wars</title>
+</head>
+<body> 
+    
+    <header>
+        <img id="img-logo" src="/img/Star_Wars_Logo..png" alt="">
+    </header>
+
+    
+<main>
+    <form>
+        <div class="square">
+            <button id="show-character-btn" type="submit">Show Character</button>
+            <button class="hidden" id="compare-data-btn" type="compare">Compare Character</button>
+        </div>
+        <div class="dropdowns">
+            
+            <div class="chooseFirstCharacter">
+            <div class="choose-character">
+            <select required name="select_character" id="character-value">
+                <option>Choose Character</option>
+                <option value="1">Luke Skywalker</option>
+                <option value="2">C-3PO</option>
+                <option value="3">R2-D2</option>
+                <option value="4">Darth Vader</option>
+                <option value="5">Leia Organa</option>
+                <option value="10">Obi-Wan Kenobi</option>
+            </select>
+
+            <div id="character-img"></div>
+            </div>
+            <div id="show-data"></div>
+            </div>
+
+            <!-- <div class="middle-info">
+            <div id="attribut"></div>
+            </div> -->
+
+            <div class="chooseSecondCharacter">
+            <div class="choose-character2">
+            <select required name="select_character" id="character-value2">
+                <option>Choose Character</option>
+                <option value="1">Luke Skywalker</option>
+                <option value="2">C-3PO</option>
+                <option value="3">R2-D2</option>
+                <option value="4">Darth Vader</option>
+                <option value="5">Leia Organa</option>
+                <option value="10">Obi-Wan Kenobi</option>
+            </select>
+            <div id="character-img2"></div>
+            </div>
+            <div id="show-data2"></div>
+    
+        </div>
+        </div>
+
+        <div id="compare-character" ></div>
+    </form> 
+</main>
+    <script src="script.js"></script>
+</body>
+</html>
