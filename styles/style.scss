@@ -4,8 +4,8 @@ body {
     flex-direction: column;
     margin: 0%;
     height: 100vh;
-    background-position: top;
-    background-size: cover;
+    background-color: rgb(123, 123, 123);
+
 }
 
 header {
@@ -29,11 +29,13 @@ main {
     height: 100%;
     background-position: center center;
     background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
+}
+    .wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+  
 .hidden {
     display: none;
 }
@@ -179,7 +181,8 @@ main {
         font-size: 20px;
     }
     
-    #show-extra-btn {
+
+    #show-extra-btn-movies {
         margin: 20px;
         width: 300px;
         height: 70px;
@@ -192,11 +195,76 @@ main {
         transition-duration: 0.2s;
     }
 
-    #show-extra-btn:hover {
+    #show-extra-btn-movies:hover {
         color: white;
     }
 
-    #show-extra-data {
+    #show-extra-data-movies {
+        color: white;
+    }
+
+
+    #show-extra-btn-appearance {
+            margin: 20px;
+            width: 300px;
+            height: 70px;
+            background-color: rgba(255, 255, 255, 0);
+            border: none;
+            font-size: 20px;
+            font-family: 'Bowlby One SC', cursive;
+            color: rgb(254, 228, 30);
+            border-radius: 100%;
+            transition-duration: 0.2s;
+    }
+
+    #show-extra-btn-appearance:hover {
+        color: white;
+    }
+
+    #show-extra-appearance {
+        color: white;
+    }
+
+    #show-extra-btn-appearance2 {
+        margin: 20px;
+        width: 300px;
+        height: 70px;
+        background-color: rgba(255, 255, 255, 0);
+        border: none;
+        font-size: 20px;
+        font-family: 'Bowlby One SC', cursive;
+        color: rgb(254, 228, 30);
+        border-radius: 100%;
+        transition-duration: 0.2s;
+}
+
+#show-extra-btn-appearance2:hover {
+    color: white;
+}
+
+    #show-extra-appearance2 {
+        color: white;
+    }
+
+
+    #show-extra-btn-homeplanet {
+        margin: 20px;
+        width: 300px;
+        height: 70px;
+        background-color: rgba(255, 255, 255, 0);
+        border: none;
+        font-size: 20px;
+        font-family: 'Bowlby One SC', cursive;
+        color: rgb(254, 228, 30);
+        border-radius: 100%;
+        transition-duration: 0.2s;
+}
+
+#show-extra-btn-homeplanet:hover {
+    color: white;
+}
+
+    #show-extra-homeplanet {
         color: white;
     }
 }

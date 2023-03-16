@@ -4,8 +4,7 @@ body {
   flex-direction: column;
   margin: 0%;
   height: 100vh;
-  background-position: top;
-  background-size: cover;
+  background-color: rgb(123, 123, 123);
 }
 
 header {
@@ -27,15 +26,18 @@ main {
   height: 100%;
   background-position: center center;
   background-size: cover;
+}
+
+.wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
-main .hidden {
+.wrapper .hidden {
   display: none;
 }
-main #show-character-btn {
+.wrapper #show-character-btn {
   margin: 20px;
   width: 300px;
   background-color: rgba(255, 255, 255, 0);
@@ -46,10 +48,10 @@ main #show-character-btn {
   border-radius: 100%;
   transition-duration: 0.2s;
 }
-main #show-character-btn:hover {
+.wrapper #show-character-btn:hover {
   color: white;
 }
-main #compare-data-btn {
+.wrapper #compare-data-btn {
   margin: 20px;
   width: 300px;
   background-color: rgba(255, 255, 255, 0);
@@ -60,16 +62,16 @@ main #compare-data-btn {
   border-radius: 100%;
   transition-duration: 0.2s;
 }
-main #compare-data-btn:hover {
+.wrapper #compare-data-btn:hover {
   color: white;
 }
-main .dropdowns {
+.wrapper .dropdowns {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   padding-top: 30px;
 }
-main .dropdowns .chooseFirstCharacter {
+.wrapper .dropdowns .chooseFirstCharacter {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,17 +79,17 @@ main .dropdowns .chooseFirstCharacter {
   font-size: 20px;
   padding-right: 50px;
 }
-main .dropdowns .chooseFirstCharacter img {
+.wrapper .dropdowns .chooseFirstCharacter img {
   width: auto;
   height: 300px;
   padding-bottom: 30px;
 }
-main .dropdowns .chooseFirstCharacter .choose-character {
+.wrapper .dropdowns .chooseFirstCharacter .choose-character {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-main .dropdowns .chooseSecondCharacter {
+.wrapper .dropdowns .chooseSecondCharacter {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -96,17 +98,17 @@ main .dropdowns .chooseSecondCharacter {
   font-size: 20px;
   padding-left: 50px;
 }
-main .dropdowns .chooseSecondCharacter img {
+.wrapper .dropdowns .chooseSecondCharacter img {
   width: auto;
   height: 300px;
   padding-bottom: 30px;
 }
-main .dropdowns .chooseSecondCharacter .choose-character2 {
+.wrapper .dropdowns .chooseSecondCharacter .choose-character2 {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-main .dropdowns #character-value {
+.wrapper .dropdowns #character-value {
   margin: 20px;
   width: 300px;
   height: 50px;
@@ -122,7 +124,7 @@ main .dropdowns #character-value {
   font-family: "Bowlby One SC", cursive;
   box-shadow: 2px 2px 6px 1px black;
 }
-main .dropdowns #character-value2 {
+.wrapper .dropdowns #character-value2 {
   margin: 20px;
   width: 300px;
   height: 50px;
@@ -137,21 +139,21 @@ main .dropdowns #character-value2 {
   font-family: "Bowlby One SC", cursive;
   box-shadow: 2px 2px 6px 1px black;
 }
-main .dropdowns #show-data {
+.wrapper .dropdowns #show-data {
   width: 200px;
   height: 100px;
   margin: 20px;
   color: white;
   white-space: pre;
 }
-main .dropdowns #show-data2 {
+.wrapper .dropdowns #show-data2 {
   width: 200px;
   height: 100px;
   margin: 20px;
   color: white;
   white-space: pre;
 }
-main #compare-character {
+.wrapper #compare-character {
   color: white;
   width: 500px;
   white-space: pre;
@@ -159,7 +161,7 @@ main #compare-character {
   font-family: "Genos", sans-serif;
   font-size: 20px;
 }
-main #show-extra-btn {
+.wrapper #show-extra-btn-movies {
   margin: 20px;
   width: 300px;
   height: 70px;
@@ -171,9 +173,63 @@ main #show-extra-btn {
   border-radius: 100%;
   transition-duration: 0.2s;
 }
-main #show-extra-btn:hover {
+.wrapper #show-extra-btn-movies:hover {
   color: white;
 }
-main #show-extra-data {
+.wrapper #show-extra-data-movies {
+  color: white;
+}
+.wrapper #show-extra-btn-appearance {
+  margin: 20px;
+  width: 300px;
+  height: 70px;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  font-size: 20px;
+  font-family: "Bowlby One SC", cursive;
+  color: rgb(254, 228, 30);
+  border-radius: 100%;
+  transition-duration: 0.2s;
+}
+.wrapper #show-extra-btn-appearance:hover {
+  color: white;
+}
+.wrapper #show-extra-appearance {
+  color: white;
+}
+.wrapper #show-extra-btn-appearance2 {
+  margin: 20px;
+  width: 300px;
+  height: 70px;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  font-size: 20px;
+  font-family: "Bowlby One SC", cursive;
+  color: rgb(254, 228, 30);
+  border-radius: 100%;
+  transition-duration: 0.2s;
+}
+.wrapper #show-extra-btn-appearance2:hover {
+  color: white;
+}
+.wrapper #show-extra-appearance2 {
+  color: white;
+}
+.wrapper #show-extra-btn-homeplanet {
+  margin: 20px;
+  width: 300px;
+  height: 70px;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  font-size: 20px;
+  font-family: "Bowlby One SC", cursive;
+  color: rgb(254, 228, 30);
+  border-radius: 100%;
+  transition-duration: 0.2s;
+}
+.wrapper #show-extra-btn-homeplanet:hover {
+  color: white;
+}
+.wrapper #show-extra-homeplanet {
   color: white;
 }/*# sourceMappingURL=style.css.map */

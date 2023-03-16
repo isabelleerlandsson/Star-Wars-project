@@ -16,6 +16,7 @@
 
     
 <main>
+    <div class="wrapper">
  
         <div class="square">
             <button id="show-character-btn" type="submit">Show Character</button>
@@ -36,10 +37,11 @@
             </select>
 
             <div id="character-img"></div>
+            <button class="hidden" id="show-extra-btn-appearance">First Appearance</button>
+            <div id="show-extra-appearance"></div>
             </div>
             <div id="show-data"></div>
             </div>
-        
 
             <div class="chooseSecondCharacter">
             <div class="choose-character2">
@@ -53,16 +55,23 @@
                 <option value="10">Obi-Wan Kenobi</option>
             </select>
             <div id="character-img2"></div>
+            <button class="hidden" id="show-extra-btn-appearance2">First Appearance</button>
+            <div id="show-extra-appearance2"></div>
             </div>
             <div id="show-data2"></div>
-           
-    
-        </div>
+            </div>
+        
         </div>
 
         <div id="compare-character" ></div>
-        <button class="hidden" id="show-extra-btn">Show more:</button>
-        <div id="show-extra-data"></div>
+        <button class="hidden" id="show-extra-btn-movies">Common Movies</button>
+        <div id="show-extra-data-movies"></div>
+        <button class="hidden" id="show-extra-btn-homeplanet">Homeplanet</button>
+        <div id="show-extra-data-homeplanet"></div>
+
+
+    </div>
+
 
 </main>
     <script src="script.js"></script>

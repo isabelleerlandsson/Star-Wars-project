@@ -18,8 +18,6 @@ class Character {
     skin_color,
     eye_color,
     films,
-    title,
-    release_date,
     vehicles,
     starships,
     homeworld,
@@ -33,8 +31,6 @@ class Character {
     this.eye_color = eye_color;
     this.pictureUrl = pictures[name];
     this.films = films;
-    this.title = title;
-    this.release_date = release_date;
     this.vehicles = vehicles;
     this.starships = starships;
     this.homeworld = homeworld;
@@ -225,14 +221,15 @@ document
       showInfo();
       comparison(selectedCharacter, selectedCharacter2);
 
-      let showExtraDataBtn = document.getElementById("show-extra-btn");
-      showExtraDataBtn.classList.remove("hidden");
+      // Visa gemensamma filmer
+      let commonFilms = document.getElementById("show-extra-btn-movies");
+      commonFilms.classList.remove("hidden");
 
-      showExtraDataBtn.addEventListener("click", async function (e) {
+      commonFilms.addEventListener("click", async function (e) {
         e.preventDefault();
         console.log("clicked");
 
-        let filmContainer = document.getElementById("show-extra-data");
+        let filmContainer = document.getElementById("show-extra-data-movies");
         for (let i = 0; i < films.length; i++) {
           const film = films[i];
 
@@ -243,12 +240,103 @@ document
           titleElement.textContent = film.title;
           filmElement.appendChild(titleElement);
 
-          const releaseElement = document.createElement("p");
-          releaseElement.textContent = `Year: ${film.release_date}`;
-          filmElement.appendChild(releaseElement);
-
           filmContainer.appendChild(filmElement);
         }
+      });
+
+      // Första karaktären - Visa first appearances
+      let firstAppearance = document.getElementById(
+        "show-extra-btn-appearance"
+      );
+      firstAppearance.classList.remove("hidden");
+
+      firstAppearance.addEventListener("click", async function (e) {
+        e.preventDefault();
+        console.log("clicked");
+
+        async function getMovieData(characterName) {
+          try {
+            const characterUrl = `https://swapi.dev/api/people/?search=${encodeURIComponent(
+              characterName
+            )}`;
+            const characterResponse = await fetch(characterUrl);
+            const characterData = await characterResponse.json();
+
+            if (!characterData.results || characterData.results.length === 0) {
+              throw new Error(`No character found with name ${characterName}`);
+            }
+
+            const character = characterData.results[0];
+            const movieUrls = character.films;
+            const movieDataPromises = movieUrls.map((url) =>
+              fetch(url).then((res) => res.json())
+            );
+            const movieData = await Promise.all(movieDataPromises);
+            const sortedMovies = movieData.sort(
+              (a, b) => new Date(a.release_date) - new Date(b.release_date)
+            );
+            const firstMovie = sortedMovies[0];
+
+            return firstMovie.release_date;
+          } catch (error) {
+            console.error(error);
+          }
+        }
+        let showAppearance = document.getElementById("show-extra-appearance");
+
+        const characterName = selectedCharacter.name;
+        const releaseDate = await getMovieData(characterName);
+        console.log(
+          `${characterName} first appeared in a movie on ${releaseDate}`
+        );
+        showAppearance.textContent = `${characterName} first appeared in a movie on ${releaseDate}`;
+      });
+
+      // Andra karaktären - Visa first appearances
+      let firstAppearance2 = document.getElementById(
+        "show-extra-btn-appearance2"
+      );
+      firstAppearance2.classList.remove("hidden");
+
+      firstAppearance2.addEventListener("click", async function (e) {
+        e.preventDefault();
+        console.log("clicked");
+
+        async function getMovieData2(characterName) {
+          try {
+            const characterUrl = `https://swapi.dev/api/people/?search=${encodeURIComponent(
+              characterName
+            )}`;
+            const characterResponse = await fetch(characterUrl);
+            const characterData = await characterResponse.json();
+
+            if (!characterData.results || characterData.results.length === 0) {
+              throw new Error(`No character found with name ${characterName}`);
+            }
+
+            const character = characterData.results[0];
+            const movieUrls = character.films;
+            const movieDataPromises = movieUrls.map((url) =>
+              fetch(url).then((res) => res.json())
+            );
+            const movieData = await Promise.all(movieDataPromises);
+            const sortedMovies = movieData.sort(
+              (a, b) => new Date(a.release_date) - new Date(b.release_date)
+            );
+            const firstMovie = sortedMovies[0];
+
+            return firstMovie.release_date;
+          } catch (error) {
+            console.error(error);
+          }
+        }
+        let showExtra2 = document.getElementById("show-extra-appearance2");
+        const characterName2 = selectedCharacter2.name;
+        const releaseDate2 = await getMovieData2(characterName2);
+        console.log(
+          `${characterName2} first appeared in a movie on ${releaseDate2}`
+        );
+        showExtra2.textContent = `${characterName2} first appeared in a movie on ${releaseDate2}`;
       });
     });
   });
