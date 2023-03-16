@@ -33,7 +33,15 @@ class Character {
     this.films = films;
     this.vehicles = vehicles;
     this.starships = starships;
-    this.homeworld = homeworld;
+    this.homeworldUrl = homeworld;
+    this.homeworld = null;
+  }
+
+  async getHomeworldData() {
+    const response = await fetch(this.homeworldUrl);
+    const data = await response.json();
+    this.homeworld = data;
+    return data;
   }
 
   async getAllCommonFilms(otherCharacter) {
@@ -337,6 +345,36 @@ document
           `${characterName2} first appeared in a movie on ${releaseDate2}`
         );
         showExtra2.textContent = `${characterName2} first appeared in a movie on ${releaseDate2}`;
+      });
+
+      // Jämför hemplanet
+      let charactersHomeplanet = document.getElementById(
+        "show-extra-btn-homeplanet"
+      );
+      charactersHomeplanet.classList.remove("hidden");
+
+      charactersHomeplanet.addEventListener("click", async function (e) {
+        e.preventDefault();
+        console.log("clicked");
+        let showHomeworld = document.getElementById(
+          "show-extra-data-homeplanet"
+        );
+
+        async function compareHomeworlds(character1, character2) {
+          await Promise.all([
+            character1.getHomeworldData(),
+            character2.getHomeworldData(),
+          ]);
+          const homeworld1 = character1.homeworld.name;
+          const homeworld2 = character2.homeworld.name;
+
+          if (homeworld1 === homeworld2) {
+            return (showHomeworld.textContent = `${character1.name} and ${character2.name} are both from planet ${homeworld1}`);
+          } else {
+            return (showHomeworld.textContent = `${character1.name} is from ${homeworld1} and ${character2.name} is from ${homeworld2}`);
+          }
+        }
+        compareHomeworlds(selectedCharacter, selectedCharacter2);
       });
     });
   });

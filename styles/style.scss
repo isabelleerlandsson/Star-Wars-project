@@ -264,7 +264,28 @@ main {
     color: white;
 }
 
-    #show-extra-homeplanet {
+    #show-extra-data-homeplanet {
+        color: white;
+    }
+
+    #show-extra-btn-vehicle-starships {
+        margin: 20px;
+        width: 300px;
+        height: 70px;
+        background-color: rgba(255, 255, 255, 0);
+        border: none;
+        font-size: 20px;
+        font-family: 'Bowlby One SC', cursive;
+        color: rgb(254, 228, 30);
+        border-radius: 100%;
+        transition-duration: 0.2s;
+}
+
+#show-extra-btn-vehicle-starships:hover {
+    color: white;
+}
+
+    #show-extra-vehicle-starships {
         color: white;
     }
 }

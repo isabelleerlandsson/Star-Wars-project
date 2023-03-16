@@ -230,6 +230,24 @@ main {
 .wrapper #show-extra-btn-homeplanet:hover {
   color: white;
 }
-.wrapper #show-extra-homeplanet {
+.wrapper #show-extra-data-homeplanet {
+  color: white;
+}
+.wrapper #show-extra-btn-vehicle-starships {
+  margin: 20px;
+  width: 300px;
+  height: 70px;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  font-size: 20px;
+  font-family: "Bowlby One SC", cursive;
+  color: rgb(254, 228, 30);
+  border-radius: 100%;
+  transition-duration: 0.2s;
+}
+.wrapper #show-extra-btn-vehicle-starships:hover {
+  color: white;
+}
+.wrapper #show-extra-vehicle-starships {
   color: white;
 }/*# sourceMappingURL=style.css.map */
