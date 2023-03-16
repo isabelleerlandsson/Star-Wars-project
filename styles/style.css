@@ -10,7 +10,6 @@ body {
 
 header {
   background-image: url(/img/Ozn.gif);
-  background-size: cover;
   width: 100%;
   display: flex;
   align-items: center;
@@ -32,7 +31,6 @@ main {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 20px;
 }
 main .hidden {
   display: none;
@@ -40,7 +38,6 @@ main .hidden {
 main #show-character-btn {
   margin: 20px;
   width: 300px;
-  height: 70px;
   background-color: rgba(255, 255, 255, 0);
   border: none;
   font-size: 24px;
@@ -55,7 +52,6 @@ main #show-character-btn:hover {
 main #compare-data-btn {
   margin: 20px;
   width: 300px;
-  height: 70px;
   background-color: rgba(255, 255, 255, 0);
   border: none;
   font-size: 24px;
@@ -84,7 +80,7 @@ main .dropdowns .chooseFirstCharacter {
 main .dropdowns .chooseFirstCharacter img {
   width: auto;
   height: 300px;
-  padding-bottom: 70px;
+  padding-bottom: 30px;
 }
 main .dropdowns .chooseFirstCharacter .choose-character {
   display: flex;
@@ -103,7 +99,7 @@ main .dropdowns .chooseSecondCharacter {
 main .dropdowns .chooseSecondCharacter img {
   width: auto;
   height: 300px;
-  padding-bottom: 70px;
+  padding-bottom: 30px;
 }
 main .dropdowns .chooseSecondCharacter .choose-character2 {
   display: flex;
@@ -143,22 +139,27 @@ main .dropdowns #character-value2 {
 }
 main .dropdowns #show-data {
   width: 200px;
-  height: 300px;
+  height: 100px;
   margin: 20px;
   color: white;
+  white-space: pre;
 }
 main .dropdowns #show-data2 {
   width: 200px;
-  height: 300px;
+  height: 100px;
   margin: 20px;
   color: white;
+  white-space: pre;
 }
-
-#compare-character {
+main #compare-character {
   color: white;
+  width: 500px;
+  white-space: pre;
+  text-align: center;
+  font-family: "Genos", sans-serif;
+  font-size: 20px;
 }
-
-#show-extra {
+main #show-extra-btn {
   margin: 20px;
   width: 300px;
   height: 70px;
@@ -169,4 +170,13 @@ main .dropdowns #show-data2 {
   color: rgb(254, 228, 30);
   border-radius: 100%;
   transition-duration: 0.2s;
+}
+main #show-extra-btn:hover {
+  color: white;
+}
+main #show-extra-data {
+  color: white;
+}
+main #datum {
+  color: white;
 }/*# sourceMappingURL=style.css.map */

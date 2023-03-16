@@ -17,8 +17,12 @@ class Character {
     hair_color,
     skin_color,
     eye_color,
-    pictureUrl,
     films,
+    title,
+    release_date,
+    vehicles,
+    starships,
+    homeworld,
   }) {
     this.name = name;
     this.gender = gender;
@@ -28,7 +32,23 @@ class Character {
     this.skin_color = skin_color;
     this.eye_color = eye_color;
     this.pictureUrl = pictures[name];
-    this.films = films.length;
+    this.films = films;
+    this.title = title;
+    this.release_date = release_date;
+    this.vehicles = vehicles;
+    this.starships = starships;
+    this.homeworld = homeworld;
+  }
+
+  async getAllCommonFilms(otherCharacter) {
+    const overlappingFilms = otherCharacter.films.filter((filmUrl) =>
+      this.films.includes(filmUrl)
+    );
+    return Promise.all(
+      overlappingFilms.map((filmApiUrl) =>
+        fetch(filmApiUrl).then((res) => res.json())
+      )
+    );
   }
 
   info() {
@@ -39,7 +59,7 @@ class Character {
   Hårfärg: ${this.hair_color}
   Hudfärg: ${this.skin_color}
   Ögonfärg: ${this.eye_color}
-  Antal Filmer: ${this.films}`;
+  Antal Filmer: ${this.films.length}`;
   }
 }
 
@@ -51,7 +71,6 @@ async function getData(characterId) {
     `https://swapi.dev/api/people/${characterId}`
   );
   let json = await characterData.json();
-
   return json;
 }
 
@@ -83,6 +102,9 @@ document
 
     let compareBtn = document.getElementById("compare-data-btn");
     compareBtn.classList.remove("hidden");
+
+    const films = await selectedCharacter.getAllCommonFilms(selectedCharacter2);
+    console.log("all films", films);
 
     function showInfo() {
       let characterData = document.querySelector("#show-data");
@@ -142,7 +164,7 @@ document
       } else {
         textComparison.push(
           `${character1.name}` +
-            " has appeared in equal number of movies " +
+            " has appeared in equal number of movies as " +
             `${character2.name}`
         );
       }
@@ -153,14 +175,14 @@ document
           `${character1.name}` +
             " and " +
             `${character2.name}` +
-            `" has the same gender"`
+            ` has the same gender`
         );
       } else {
         textComparison.push(
           `${character2.name}` +
             " and " +
             `${character1.name}` +
-            `"does not have the same gender"`
+            `does not have the same gender`
         );
       }
 
@@ -170,7 +192,7 @@ document
           `${character2.name}` +
             " and " +
             `${character1.name}` +
-            `"has the same haircolor"`
+            `has the same haircolor`
         );
       } else {
         textComparison.push(
@@ -185,7 +207,7 @@ document
           `${character2.name}` +
             " and " +
             `${character1.name}` +
-            `"has the same skincolor"`
+            `has the same skincolor`
         );
       } else {
         textComparison.push(
@@ -194,8 +216,7 @@ document
             `${character2.name}`
         );
       }
-
-      comparisonData.textContent = textComparison.join(", ");
+      comparisonData.textContent = textComparison.join(",\n ");
     }
 
     compareBtn.addEventListener("click", function (e) {
@@ -204,15 +225,30 @@ document
       showInfo();
       comparison(selectedCharacter, selectedCharacter2);
 
-      let showExtraDataBtn = document.getElementById("show-extra");
+      let showExtraDataBtn = document.getElementById("show-extra-btn");
       showExtraDataBtn.classList.remove("hidden");
 
       showExtraDataBtn.addEventListener("click", async function (e) {
         e.preventDefault();
         console.log("clicked");
 
-        let extraData = document.getElementById("show-extra-data");
-        extraData.textContent = showInfo();
+        let filmContainer = document.getElementById("show-extra-data");
+        for (let i = 0; i < films.length; i++) {
+          const film = films[i];
+
+          const filmElement = document.createElement("div");
+          filmElement.classList.add("film");
+
+          const titleElement = document.createElement("p");
+          titleElement.textContent = film.title;
+          filmElement.appendChild(titleElement);
+
+          const releaseElement = document.createElement("p");
+          releaseElement.textContent = `Year: ${film.release_date}`;
+          filmElement.appendChild(releaseElement);
+
+          filmContainer.appendChild(filmElement);
+        }
       });
     });
   });

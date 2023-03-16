@@ -2,7 +2,6 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    // background-image: url(/img/starwars.jpeg);
     margin: 0%;
     height: 100vh;
     background-position: top;
@@ -11,7 +10,6 @@ body {
 
 header {
     background-image: url(/img/Ozn.gif);
-    background-size: cover;
     width: 100%;
     display: flex;
     align-items: center;
@@ -35,7 +33,6 @@ main {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 20px;
 
 .hidden {
     display: none;
@@ -43,13 +40,10 @@ main {
 
 
     #show-character-btn {
-        // background-image: url(/img/Ozn.gif);
         margin: 20px;
         width: 300px;
-        height: 70px;
         background-color: rgba(255, 255, 255, 0);
         border: none;
-        // box-shadow: 2px 2px 6px 1px black;
         font-size: 24px;
         font-family: 'Bowlby One SC', cursive;
         color: rgb(254, 228, 30);
@@ -62,13 +56,10 @@ main {
     }
 
     #compare-data-btn {
-        // background-image: url(/img/Ozn.gif);
         margin: 20px;
         width: 300px;
-        height: 70px;
         background-color: rgba(255, 255, 255, 0);
         border: none;
-        // box-shadow: 2px 2px 6px 1px black;
         font-size: 24px;
         font-family: 'Bowlby One SC', cursive;
         color: rgb(254, 228, 30);
@@ -97,7 +88,7 @@ main {
         img {
             width: auto; 
             height: 300px;
-            padding-bottom: 70px;
+            padding-bottom: 30px;
         }
 
         .choose-character {
@@ -119,7 +110,7 @@ main {
         img {
             width: auto; 
             height: 300px;
-            padding-bottom: 70px;
+            padding-bottom: 30px;
         }
 
         .choose-character2 {
@@ -164,34 +155,54 @@ main {
         #show-data {
             // border: black solid 2px;
             width: 200px;
-            height: 300px;
+            height: 100px;
             margin: 20px;
             color: white;
+            white-space: pre;
         }
         
         #show-data2{
             // border: black solid 2px;
             width: 200px;
-            height: 300px;
+            height: 100px;
             margin: 20px;
             color: white;
+            white-space: pre;
         }
     }
-}
 
-#compare-character {
-    color: white;
-}
 
-#show-extra {
-    margin: 20px;
-    width: 300px;
-    height: 70px;
-    background-color: rgba(255, 255, 255, 0);
-    border: none;
-    font-size: 20px;
-    font-family: 'Bowlby One SC', cursive;
-    color: rgb(254, 228, 30);
-    border-radius: 100%;
-    transition-duration: 0.2s;
+    #compare-character {
+        color: white;
+        width: 500px;
+        white-space: pre;
+        text-align: center;
+        font-family: 'Genos', sans-serif;
+        font-size: 20px;
+    }
+    
+    #show-extra-btn {
+        margin: 20px;
+        width: 300px;
+        height: 70px;
+        background-color: rgba(255, 255, 255, 0);
+        border: none;
+        font-size: 20px;
+        font-family: 'Bowlby One SC', cursive;
+        color: rgb(254, 228, 30);
+        border-radius: 100%;
+        transition-duration: 0.2s;
+    }
+
+    #show-extra-btn:hover {
+        color: white;
+    }
+
+    #show-extra-data {
+        color: white;
+    }
+
+    #datum {
+        color: white;
+    }
 }
